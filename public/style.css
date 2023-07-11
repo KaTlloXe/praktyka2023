@@ -8,3 +8,14 @@
     float: right;
     border-radius: 20px;
     width: 25%;}
+#temp-message {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 20px;
+  background-color: rgba(30, 253, 18, 1);
+  color: rgb(0, 0, 0);
+  font-size: 16px;
+  display: none;
+  z-index: 9999;
+}

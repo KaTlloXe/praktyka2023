@@ -13,6 +13,8 @@ body
         button.w3-bar-item.w3-button.w3-hover-green.w3-padding-24.a-font(onclick="document.getElementById('id02').style.display='block'") Додати відпустку
         input.w3-bar-item.w3-input.w3-margin.input(type="text", placeholder="Введіть П.І.Б.")
         include modals.pug
+        div#temp-message
+
 
     div.w3-container
         h3 Прізвище Ім'я По-батькові ID 
@@ -40,16 +42,32 @@ body
                 include table_main
 
 script.
-  function openVac(event, vacName) {
-    var i, tabcontent, tablinks;
-    tabcontent = document.getElementsByClassName("vacation");
-    for (i = 0; i < tabcontent.length; i++) {
-      tabcontent[i].style.display = "none";
-    }
-    tablinks = document.getElementsByClassName("tablink");
-    for (i = 0; i < tablinks.length; i++) {
-      tablinks[i].className = tablinks[i].className.replace(" w3-amber", "");
-    }
-    document.getElementById(vacName).style.display = "block";
-    event.currentTarget.className += " w3-amber";
+    //JS code for modal windows
+    function openVac(event, vacName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("vacation");
+        for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablink");
+        for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" w3-amber", "");
+        }
+        document.getElementById(vacName).style.display = "block";
+        event.currentTarget.className += " w3-amber";
  }
+script.
+    // JavaScript code to display and remove the temporary message
+    document.addEventListener('DOMContentLoaded', function() {
+      var tempMessage = document.getElementById('temp-message');
+      var isTemporary = '#{messages.isTemporary}'; // Pass the isTemporary flag from the backend
+
+      if (isTemporary) {
+        tempMessage.textContent = '#{messages.success}'; // Display the success message from the backend
+        tempMessage.style.display = 'block';
+
+        setTimeout(function() {
+          tempMessage.style.display = 'none';
+        }, 3000); // Hide the message after 5 seconds
+      }
+    });
