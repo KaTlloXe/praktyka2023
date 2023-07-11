@@ -4,45 +4,45 @@ head
     meta(charset="utf-8")
     link(rel="stylesheet", href="w3.css")
     link(rel="stylesheet", href="style.css")
-    link(rel="preconnect", href="https://fonts.googleapis.com")
-    link(rel="preconnect", href="https://fonts.gstatic.com" crossorigin)
-    link(href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&display=swap", rel="stylesheet")
     script(src="jquery.js")
     style.
 body 
     div.w3-bar.w3-amber.w3-large
-        a(href="#").w3-bar-item.w3-button.w3-hover-red.w3-padding-24.a-font Новий рік
-        a(href="#").w3-bar-item.w3-button.w3-hover-blue.w3-padding-24.a-font Новий користувач
-        a(href="#").w3-bar-item.w3-button.w3-hover-green.w3-padding-24.a-font Додати відпустку
-        input(type="text")(placeholder="Введіть П.І.Б.").w3-bar-item.w3-input.w3-margin.input
+        button.w3-bar-item.w3-button.w3-hover-red.w3-padding-24.a-font Новий рік
+        button.w3-bar-item.w3-button.w3-hover-blue.w3-padding-24.a-font(onclick="document.getElementById('id01').style.display='block'") Новий користувач
+        button.w3-bar-item.w3-button.w3-hover-green.w3-padding-24.a-font(onclick="document.getElementById('id02').style.display='block'") Додати відпустку
+        input.w3-bar-item.w3-input.w3-margin.input(type="text", placeholder="Введіть П.І.Б.")
+        include modals.pug
+
     div.w3-container
         h3 Прізвище Ім'я По-батькові ID 
         div 2023
         div.w3-margin Статистика, залишки, періоди
         
         div.w3-bar.w3-black
-            button.w3-bar-item.w3-button.tablink.w3-amber(onclick="openCity(event,'Main_vac')") Основна відпустка
-            button.w3-bar-item.w3-button.tablink(onclick="openCity(event,'Extra_vac')") Додаткова відпустка
-            button.w3-bar-item.w3-button.tablink(onclick="openCity(event,'Soc_vac')") Соціальна відпустка
-            button.w3-bar-item.w3-button.tablink(onclick="openCity(event,'PC_vac')") Робота за ПК
+            button.w3-bar-item.w3-button.tablink.w3-amber(onclick="openVac(event,'Main_vac')") Основна відпустка
+            button.w3-bar-item.w3-button.tablink(onclick="openVac(event,'Extra_vac')") Додаткова відпустка
+            button.w3-bar-item.w3-button.tablink(onclick="openVac(event,'Soc_vac')") Соціальна відпустка
+            button.w3-bar-item.w3-button.tablink(onclick="openVac(event,'PC_vac')") Робота за ПК
 
         div#w3-container.w3-padding-16
-            div#Main_vac.city
+            div#Main_vac.vacation
                 include table_main
 
-            div#Extra_vac.city(style="display:none")
+            div#Extra_vac.vacation(style="display:none")
+                p tab2
                 include table_main
-
-            div#Soc_vac.w3-container.w3-border.city(style="display:none")
+            div#Soc_vac.w3-container.w3-border.vacation(style="display:none")
+                p tab3
                 include table_main
-
-            div#PC_vac.w3-container.w3-border.city(style="display:none")
+            div#PC_vac.w3-container.w3-border.vacation(style="display:none")
+                p tab4
                 include table_main
 
 script.
-  function openCity(event, cityName) {
+  function openVac(event, vacName) {
     var i, tabcontent, tablinks;
-    tabcontent = document.getElementsByClassName("city");
+    tabcontent = document.getElementsByClassName("vacation");
     for (i = 0; i < tabcontent.length; i++) {
       tabcontent[i].style.display = "none";
     }
@@ -50,6 +50,6 @@ script.
     for (i = 0; i < tablinks.length; i++) {
       tablinks[i].className = tablinks[i].className.replace(" w3-amber", "");
     }
-    document.getElementById(cityName).style.display = "block";
+    document.getElementById(vacName).style.display = "block";
     event.currentTarget.className += " w3-amber";
-}
+ }
