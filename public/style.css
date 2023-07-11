@@ -12,8 +12,9 @@
   position: fixed;
   bottom: 20px;
   right: 20px;
-  padding: 20px;
-  background-color: rgba(30, 253, 18, 1);
+  border-radius: 5px;
+  padding: 25px;
+  background-color: rgb(25, 233, 14);
   color: rgb(0, 0, 0);
   font-size: 16px;
   display: none;
